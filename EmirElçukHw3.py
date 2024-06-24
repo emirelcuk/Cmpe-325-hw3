@@ -60,6 +60,5 @@ integer_list=[]
 for i in g_list: #user inputs list elements and the elements are converted to int value from char.
     integer_list.append(int(i))
 game(integer_list)
-if abc==1:
-    print("deneme")
+
 

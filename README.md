@@ -1,9 +1,6 @@
 
 # emirelcuk.hw3
-
-![Lines-of-Code Badge](https://github.com/emirelcuk/Cmpe-325-hw3/blob/image-data/loc-badge.svg)
-![Hits-of-Code Badge](https://github.com/emirelcuk/Cmpe-325-hw3/blob/hoc-badge/hoc-badge.svg)
-
+Commit Revert işlemi için Deneme 1
 <h1 align="center">Hi 👋, I'm Emir Elçuk</h1>
 <h3 align="center">Computer Engineer Student at Atılım University</h3>
 

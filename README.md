@@ -1,8 +1,4 @@
 
-# emirelcuk.hw3
-
-<div class="badge-base LI-profile-badge" data-locale="tr_TR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="emirelcuk" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://tr.linkedin.com/in/emirelcuk/tr?trk=profile-badge">Emir Elçuk</a></div>
-              
 <h1 align="center">Hi 👋, I'm Emir Elçuk</h1>
 <h3 align="center">Computer Engineer Student at Atılım University</h3>
 

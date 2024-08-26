@@ -1,6 +1,6 @@
 import random
 def game(game_list):
-    health = 10
+    health = 10 
     score = 0
     index1 = 0
     for x in game_list:

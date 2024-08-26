@@ -6,7 +6,7 @@ def game(game_list):
     for x in game_list: 
         if health > 0:
             print("---------------")
-            print("Game list:", game_list)
+            print("Game list:", game_list) 
             friends = list(filter(lambda x: x == 0, game_list))
             enemies = list(filter(lambda x: x == 1, game_list))
             print(f"There are {len(friends)} friends and {len(enemies)} enemies")

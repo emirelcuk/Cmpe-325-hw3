@@ -1,5 +1,5 @@
 import random   
-def game(game_list):  
+def game(game_list):   
     health = 10  
     score = 9
     index1 = 0 

@@ -1,6 +1,6 @@
 
 
-import random
+import random 
 def game(game_list):
     health = 10  
     score = 9

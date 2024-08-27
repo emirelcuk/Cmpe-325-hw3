@@ -62,4 +62,28 @@ for i in g_list: #user inputs list elements and the elements are converted to in
     integer_list.append(int(i))
 game(integer_list)
 
+def game(game_list):
+    health = 10  
+    score = 0 
+    index1 = 0 
+    isim = "emir"
+    for x in game_list: 
+        if health > 0:
+            print("---------------")
+            print("Game list:", game_list) 
+            friends = list(filter(lambda x: x == 0, game_list))
+            enemies = list(filter(lambda x: x == 1, game_list))
+            print(f"There are {len(friends)} friends and {len(enemies)} enemies")
+            print(f"Your health is {health}")
+            print(f"Your score is {score}")
+            print("---------------")
+            current_item = game_list[index1]
+            index1=index1+1
+            if current_item == 0:
+                print("You see a friend")
+            elif current_item == 1:
+                print("You see an enemy")
+            else:
+                print("You see a button")
+
 

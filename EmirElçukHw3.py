@@ -1,8 +1,8 @@
 
 import random
 def game(game_list):
-    health = 100  
-    score = 90 
+    health = 10  
+    score = 9
     index1 = 0 
     isim = "emir"
     for x in game_list: 

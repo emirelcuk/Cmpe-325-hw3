@@ -28,7 +28,6 @@ print("Pascal's Triangle (5 rows):")
 for row in triangle:
     print(row)
 
-
 def game(game_list):   
     health = 10  
     score = 9

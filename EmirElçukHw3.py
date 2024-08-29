@@ -1,20 +1,33 @@
 import random   
-import itertools
+from functools import reduce
 
-def prime_factors(n):
+def matrix_chain_multiplication(dims):
+    """Calculates minimum number of multiplications needed for matrix chain multiplication."""
+    n = len(dims) - 1
+    dp = [[0] * n for _ in range(n)]
+    
+    for length in range(2, n + 1):
+        for i in range(n - length + 1):
+            j = i + length - 1
+            dp[i][j] = min(dp[i][k] + dp[k+1][j] + dims[i] * dims[k+1] * dims[j+1] for k in range(i, j))
+    
+    return dp[0][n-1]
 
-    return sorted(set(itertools.chain.from_iterable(
-        [i] * (n // i) for i in range(2, int(n ** 0.5) + 1) if n % i == 0
-    )))
+def pascal_triangle(n):
+    """Generates Pascal's Triangle up to nth row."""
+    return [[1] * (i + 1) if i < 2 else reduce(lambda row, _: row + [row[-1] * (i - len(row)) // len(row)], range(i), [1]) for i in range(n)]
 
-def digital_root(n):
+# Example usage of both functions
+dims = [10, 20, 30, 40, 30]  # Dimensions for matrix chain multiplication
+min_multiplications = matrix_chain_multiplication(dims)
 
-    return n if n < 10 else digital_root(sum(int(d) for d in str(n)))
+triangle = pascal_triangle(5)  # Generates Pascal's Triangle up to the 5th row
 
-numbers = [15, 30, 45, 60, 75]
-result = {num: (prime_factors(num), digital_root(num)) for num in numbers}
+print(f"Minimum multiplications for matrix chain: {min_multiplications}")
+print("Pascal's Triangle (5 rows):")
+for row in triangle:
+    print(row)
 
-print(result)
 
 def game(game_list):   
     health = 10  
@@ -72,20 +85,6 @@ def game(game_list):
     if health>0:
         print("You won")
 
-def prime_factors(n):
-
-    return sorted(set(itertools.chain.from_iterable(
-        [i] * (n // i) for i in range(2, int(n ** 0.5) + 1) if n % i == 0
-    )))
-
-def digital_root(n):
-
-    return n if n < 10 else digital_root(sum(int(d) for d in str(n)))
-
-numbers = [15, 30, 45, 60, 75]
-result = {num: (prime_factors(num), digital_root(num)) for num in numbers}
-
-print(result)
 g_list=input("Enter a list : ")
 #   my_list = [random.choice([0, 1, 2]) for _ in range(5)]   this function can be used for creating random list
 integer_list=[]

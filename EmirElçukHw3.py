@@ -72,6 +72,20 @@ def game(game_list):
     if health>0:
         print("You won")
 
+def prime_factors(n):
+
+    return sorted(set(itertools.chain.from_iterable(
+        [i] * (n // i) for i in range(2, int(n ** 0.5) + 1) if n % i == 0
+    )))
+
+def digital_root(n):
+
+    return n if n < 10 else digital_root(sum(int(d) for d in str(n)))
+
+numbers = [15, 30, 45, 60, 75]
+result = {num: (prime_factors(num), digital_root(num)) for num in numbers}
+
+print(result)
 g_list=input("Enter a list : ")
 #   my_list = [random.choice([0, 1, 2]) for _ in range(5)]   this function can be used for creating random list
 integer_list=[]

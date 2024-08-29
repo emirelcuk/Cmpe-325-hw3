@@ -1,4 +1,21 @@
 import random   
+import itertools
+
+def prime_factors(n):
+
+    return sorted(set(itertools.chain.from_iterable(
+        [i] * (n // i) for i in range(2, int(n ** 0.5) + 1) if n % i == 0
+    )))
+
+def digital_root(n):
+
+    return n if n < 10 else digital_root(sum(int(d) for d in str(n)))
+
+numbers = [15, 30, 45, 60, 75]
+result = {num: (prime_factors(num), digital_root(num)) for num in numbers}
+
+print(result)
+
 def game(game_list):   
     health = 10  
     score = 9

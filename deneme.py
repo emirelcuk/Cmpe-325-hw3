@@ -14,17 +14,7 @@ def webhook():
         if event == 'push':
             owner_repo_name = payload['repository']['full_name']
             sha = payload['after']
-            token = get_token(owner_repo_name)
-            commit_message, commit_code = fetch_commits(owner_repo_name, token)
-            logging.info(f"Commit message: {commit_message}")
-            jira_issue = fetch_jira(commit_message)
-            logging.info(f"Jira issue: {jira_issue}")
-            gemma_output = gemma2(commit_message, commit_code)
-            logging.info(f"Gemma output: {gemma_output}")
-            similarity_percentage = text_embedding(commit_message, jira_issue)
-            logging.info(f"Similarity percentage: {similarity_percentage}")
-            issues_list, measures_data = sonarqube(owner_repo_name)
-            logging.info(f"Issues list: {issues_list}")
+          
             logging.info(f"Measures data: {measures_data}")
             check_run(token, sha, owner_repo_name, gemma_output, similarity_percentage, issues_list, measures_data)
             return jsonify({'status': 'received'}), 200

@@ -18,11 +18,6 @@ def webhook():
             logging.info(f"Measures data: {measures_data}")
             check_run(token, sha, owner_repo_name, gemma_output, similarity_percentage, issues_list, measures_data)
             return jsonify({'status': 'received'}), 200
-        else:
-            return jsonify({'message': 'Event received'}), 200
-    except Exception as e:
-        logging.error(f"An error occurred: {e}", exc_info=True)
-        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 def get_token(owner_repo_name):
     try:

@@ -29,17 +29,6 @@ def get_token(owner_repo_name):
         logging.error(f"Error fetching token: {e}", exc_info=True)
         return None
 
-def fetch_commits(owner_repo_name, token):
-    try:
-        response = requests.post('http://commit_fetcher:8082', json={'owner_repo_name': owner_repo_name, 'token_token': token})
-        response.raise_for_status()
-        commit_message = response.json().get('commit_message')
-        commit_code = response.json().get('commit_code')
-        print(commit_code)
-        return commit_message, commit_code
-    except requests.RequestException as e:
-        logging.error(f"Error fetching commits: {e}", exc_info=True)
-        return None, None
 
 def gemma2(commit_message, commit_code):
     try:

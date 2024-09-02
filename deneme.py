@@ -8,8 +8,7 @@ class Character:
         self.damage = damage
 
     def attack(self, target):
-        damage_dealt = random.randint(1, self.damage)
-        target.health -= damage_dealt
+
         print(f"{self.name} attacked {target.name} for {damage_dealt} damage.")
 
     def is_alive(self):

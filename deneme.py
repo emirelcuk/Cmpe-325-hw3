@@ -58,11 +58,7 @@ def check_run(token, sha, owner_repo_name, gemma_output,similarity_percentage, i
         response = requests.post('http://check_run_service:8087', json={
             'token': token,
             'sha': sha,
-            'owner_repo_name': owner_repo_name,
-            'gemma_output': gemma_output["gemma_output"],
-            'gemma_comment':gemma_output["gemma_comment"],
-            'similarity_percentage': similarity_percentage,
-            'issues_list': issues_list,
+            
             'measures_data': measures_data
         })
         response.raise_for_status()

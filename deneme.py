@@ -24,12 +24,13 @@ def webhook():
 
 def gemma2(commit_message, commit_code):
     try:
+        new_int = 0
         response = requests.post('http://gemma2_service:8083', json={'commit_message': commit_message, 'commit_code': commit_code})
         response.raise_for_status()
-        gemma_output = response.json().get('gemma_output')
         gemma_comment = response.json().get('gemma_comment')
         return {"gemma_output":gemma_output,"gemma_comment":gemma_comment}
     except requests.RequestException as e:
+        print("error")
         logging.error(f"Error in Gemma2: {e}", exc_info=True)
         return None
 

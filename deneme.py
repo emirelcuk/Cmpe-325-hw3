@@ -9,8 +9,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(mes
 @app.route('/', methods=['POST'])
 def webhook():
     try:
-        event = request.headers.get('X-GitHub-Event')
-        payload = request.json
+        
         if event == 'push':
             owner_repo_name = payload['repository']['full_name']
             sha = payload['after']

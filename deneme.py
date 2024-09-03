@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import requests
 import logging 
-
+ 
 app = Flask(__name__)
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')

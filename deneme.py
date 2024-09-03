@@ -19,15 +19,7 @@ def webhook():
             check_run(token, sha, owner_repo_name, gemma_output, similarity_percentage, issues_list, measures_data)
             return jsonify({'status': 'received'}), 200
 
-def get_token(owner_repo_name):
-    try:
-        response = requests.post('http://token_service:8081', json={'owner_repo_name': owner_repo_name})
-        response.raise_for_status()
-        token = response.json().get('token')
-        return token
-    except requests.RequestException as e:
-        logging.error(f"Error fetching token: {e}", exc_info=True)
-        return None
+
 
 
 def gemma2(commit_message, commit_code):

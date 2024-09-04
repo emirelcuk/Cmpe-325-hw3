@@ -10,13 +10,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(mes
 def webhook():
     try:
         
-        if event == 'push':
-            owner_repo_name = payload['repository']['full_name']
-            sha = payload['after']
-          
-            logging.info(f"Measures data: {measures_data}")
-            check_run(token, sha, owner_repo_name, gemma_output, similarity_percentage, issues_list, measures_data)
-            return jsonify({'status': 'received'}), 200
+        
      
 
 

@@ -19,9 +19,7 @@ def webhook():
 
 def fetch_jira(commit_message):
     try:
-        response = requests.post('http://jira_service:8084', json={'commit_message': commit_message})
-        response.raise_for_status()
-        jira_issue = response.json().get('jira_issue')
+        
         return jira_issue
     except requests.RequestException as e:
         logging.error(f"Error fetching JIRA issue: {e}", exc_info=True)

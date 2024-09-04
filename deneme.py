@@ -7,7 +7,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
   
 @app.route('/', methods=['POST'])
-def webhook():
+def webhook(): 
     try:
         
         

@@ -10,20 +10,6 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(mes
 def webhook(): 
     try:
 
-        
-       
-
- 
-
-
-
-def fetch_jira(commit_message):
-    try:
-        
-        return jira_issue
-    except requests.RequestException as e:
-        logging.error(f"Error fetching JIRA issue: {e}", exc_info=True)
-        return None
 
 def text_embedding(commit_message, jira_tasks):
     try:

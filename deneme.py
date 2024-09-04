@@ -37,20 +37,6 @@ def text_embedding(commit_message, jira_tasks):
         logging.error(f"Error in text embedding: {e}", exc_info=True)
         return None
 
-def check_run(token, sha, owner_repo_name, gemma_output,similarity_percentage, issues_list, measures_data):
-    try:
-        response = requests.post('http://check_run_service:8087', json={
-            'token': token,
-            'sha': sha,
-            
-            'measures_data': measures_data
-        })
-        response.raise_for_status()
-        return "Check-run successfully executed"
-    except requests.RequestException as e:
-        logging.error(f"Error in check run: {e}", exc_info=True)
-        return None
-
 def sonarqube(owner_repo_name):
     try:
         response = requests.post('http://sonarscanner_service:8088', json={'owner_repo_name': owner_repo_name})

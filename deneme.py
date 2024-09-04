@@ -17,7 +17,7 @@ def webhook():
             logging.info(f"Measures data: {measures_data}")
             check_run(token, sha, owner_repo_name, gemma_output, similarity_percentage, issues_list, measures_data)
             return jsonify({'status': 'received'}), 200
-
+     
 
 
 

@@ -1,15 +1,81 @@
 from flask import Flask, request, jsonify
 import requests
-import logging 
- 
-app = Flask(__name__)
-   
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
-  
-@app.route('/', methods=['POST']) 
-def webhook(): 
-    try:
+import logging
 
+app = Flask(__name__)
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
+
+@app.route('/', methods=['POST'])
+def webhook():
+    try:
+        event = request.headers.get('X-GitHub-Event')
+        payload = request.json
+        if event == 'push':
+            owner_repo_name = payload['repository']['full_name']
+            sha = payload['after']
+            token = get_token(owner_repo_name)
+            commit_message, commit_code = fetch_commits(owner_repo_name, token)
+            logging.info(f"Commit message: {commit_message}")
+            jira_issue = fetch_jira(commit_message)
+            logging.info(f"Jira issue: {jira_issue}")
+            gemma_output = gemma2(commit_message, commit_code)
+            logging.info(f"Gemma output: {gemma_output}")
+            similarity_percentage = text_embedding(commit_message, jira_issue)
+            logging.info(f"Similarity percentage: {similarity_percentage}")
+            issues_list, measures_data = sonarqube(owner_repo_name)
+            logging.info(f"Issues list: {issues_list}")
+            logging.info(f"Measures data: {measures_data}")
+            check_run(token, sha, owner_repo_name, gemma_output, similarity_percentage, issues_list, measures_data)
+            return jsonify({'status': 'received'}), 200
+        else:
+            return jsonify({'message': 'Event received'}), 200
+    except Exception as e:
+        logging.error(f"An error occurred: {e}", exc_info=True)
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+def get_token(owner_repo_name):
+    try:
+        response = requests.post('http://token_service:8081', json={'owner_repo_name': owner_repo_name})
+        response.raise_for_status()
+        token = response.json().get('token')
+        return token
+    except requests.RequestException as e:
+        logging.error(f"Error fetching token: {e}", exc_info=True)
+        return None
+
+def fetch_commits(owner_repo_name, token):
+    try:
+        response = requests.post('http://commit_fetcher:8082', json={'owner_repo_name': owner_repo_name, 'token_token': token})
+        response.raise_for_status()
+        commit_message = response.json().get('commit_message')
+        commit_code = response.json().get('commit_code')
+        print(commit_code)
+        return commit_message, commit_code
+    except requests.RequestException as e:
+        logging.error(f"Error fetching commits: {e}", exc_info=True)
+        return None, None
+
+def gemma2(commit_message, commit_code):
+    try:
+        response = requests.post('http://gemma2_service:8083', json={'commit_message': commit_message, 'commit_code': commit_code})
+        response.raise_for_status()
+        gemma_output = response.json().get('gemma_output')
+        gemma_comment = response.json().get('gemma_comment')
+        return {"gemma_output":gemma_output,"gemma_comment":gemma_comment}
+    except requests.RequestException as e:
+        logging.error(f"Error in Gemma2: {e}", exc_info=True)
+        return None
+
+def fetch_jira(commit_message):
+    try:
+        response = requests.post('http://jira_service:8084', json={'commit_message': commit_message})
+        response.raise_for_status()
+        jira_issue = response.json().get('jira_issue')
+        return jira_issue
+    except requests.RequestException as e:
+        logging.error(f"Error fetching JIRA issue: {e}", exc_info=True)
+        return None
 
 def text_embedding(commit_message, jira_tasks):
     try:
@@ -19,6 +85,24 @@ def text_embedding(commit_message, jira_tasks):
         return similarity_percentage
     except requests.RequestException as e:
         logging.error(f"Error in text embedding: {e}", exc_info=True)
+        return None
+
+def check_run(token, sha, owner_repo_name, gemma_output,similarity_percentage, issues_list, measures_data):
+    try:
+        response = requests.post('http://check_run_service:8087', json={
+            'token': token,
+            'sha': sha,
+            'owner_repo_name': owner_repo_name,
+            'gemma_output': gemma_output["gemma_output"],
+            'gemma_comment':gemma_output["gemma_comment"],
+            'similarity_percentage': similarity_percentage,
+            'issues_list': issues_list,
+            'measures_data': measures_data
+        })
+        response.raise_for_status()
+        return "Check-run successfully executed"
+    except requests.RequestException as e:
+        logging.error(f"Error in check run: {e}", exc_info=True)
         return None
 
 def sonarqube(owner_repo_name):

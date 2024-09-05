@@ -34,16 +34,6 @@ def webhook():
         logging.error(f"An error occurred: {e}", exc_info=True)
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
-def get_token(owner_repo_name):
-    try:
-        response = requests.post('http://token_service:8081', json={'owner_repo_name': owner_repo_name})
-        response.raise_for_status()
-        token = response.json().get('token')
-        return token
-    except requests.RequestException as e:
-        logging.error(f"Error fetching token: {e}", exc_info=True)
-        return None
-
 def fetch_commits(owner_repo_name, token):
     try:
         response = requests.post('http://commit_fetcher:8082', json={'owner_repo_name': owner_repo_name, 'token_token': token})

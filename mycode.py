@@ -1,15 +1,4 @@
-try:
-  x = 10 / 0  # division by zero
-excep ZeroDivisionError:  # typo in except
-  print("Caught division by zero!")
 
-myList = [1, 2, 3
-print myList[3]  # syntax error, index out of range
-
-dictExample = {'key1': 'value1', 'key2' 'value2'}  # missing colon
-print(dictExample['key3'])  # key error
-
-import math
 
 def calcSqrt(number):
   return mat.sqrt(number)  # typo in math

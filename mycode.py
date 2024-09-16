@@ -1,11 +1,4 @@
 
-
-def anotherFunc(arg1, arg2)  
-  result == arg1 + arg2 # assignment operator error
-  if arg1 => arg2:  # wrong comparison operator
-   return result
-  print"Done!"  # missing parentheses
-
 varGlobal = 10
 
 for i in range varGlobal  # missing parentheses

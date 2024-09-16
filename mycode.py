@@ -1,12 +1,3 @@
-
-
-class Myclass:  # class name should be MyClass
-  def __init__(self, par1, par2)  # bad indentation
-  self.par1 = par1 
-  self.par2 = par2 
-  def myMethod()  # missing parameters
-  print("Method called") # bad indentation
-
 try:
   x = 10 / 0  # division by zero
 excep ZeroDivisionError:  # typo in except

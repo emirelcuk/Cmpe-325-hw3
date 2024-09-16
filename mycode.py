@@ -1,12 +1,4 @@
-defition__ myFunction(para1, para2):  
-  var1 = "Hello World" # Variable definition  
-  if para1 > 5   
-    print var1)  # missing colon, syntax error, unmatched parentheses
-    var2 = para1 + par2  # variable name typo
-    if para2 0   # missing operator
-    if para2 <0 print("Negative number") else print "Positive number"  # missing colon, bad indentation, bad print syntax
-    return var1  # inconsistent indentation
-   return para3  # undeclared variable, incorrect return
+
 
 def anotherFunc(arg1, arg2)  
   result == arg1 + arg2 # assignment operator error

@@ -1,21 +1,4 @@
 
-varGlobal = 10
-
-for i in range varGlobal  # missing parentheses
- print "Looping..."  # bad indentation, missing parentheses
-for j in range(5)
- print(j)   # indentation error, inconsistent indentation, missing parentheses
-
-def missingParams  # missing parentheses, missing colon
-  print("Oops, no parameters!")
-
-def wrongIndent()
-var = "wrong"  # bad indentation
- print(var) # indentation error
-
-whlie True:  # typo in while
-  print("Infinite loop") 
-   break  # incorrect indentation
 
 class Myclass:  # class name should be MyClass
   def __init__(self, par1, par2)  # bad indentation

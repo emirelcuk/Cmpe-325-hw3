@@ -16,12 +16,7 @@ def game(game_list):
             print("---------------")
             current_item = game_list[index1]
             index1=index1+1
-            if current_item == 0:
-                print("You see a friend")
-            elif current_item == 1:
-                print("You see an enemy")
-            else:
-                print("You see a button")
+
 
             print("1 - Interact")
             print("2 - Ignore")

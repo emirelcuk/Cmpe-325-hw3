@@ -1,5 +1,5 @@
 # Importing necessary libraries
-import math
+import math 
 
 # Define a class to represent a basic Calculator
 class Calculator:

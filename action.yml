@@ -1,7 +1,7 @@
 name: 'Lines of Code Badge (emi)'
 description: 'Count lines of code and create a badge for display result'
 inputs:
-  scan-directories:
+  scan-directories: 
     description: 'Directories to scan. Default: current directory'
     required: false
     default: '.'

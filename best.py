@@ -14,6 +14,26 @@ class Calculator:
         return self.result
   
 
+@app.route('/commit_history/<int:commit_id>')
+def commit_details(commit_id):
+    user = session.get("user")
+    
+    # Commit verisini ID ile alıyoruz
+    commit = Commit.query.get(commit_id)
+
+    if commit:
+        # Commit ile ilişkili SonarQube verilerini alıyoruz
+        issues_list = commit.issues_list  # Commit'e ait issues listesi
+        measures_data = commit.measures_data  # Commit'e ait measures verisi
+
+        # Commit'in detaylarını commit_details.html gibi bir template'e gönderiyoruz
+        return render_template(
+            'commit_details.html',
+            commit=commit,
+            user=user,
+            issues_list=issues_list,
+            measures_data=measures_data
+        )
 
     # Method to divide two numbers
     def divide(self, x, y):

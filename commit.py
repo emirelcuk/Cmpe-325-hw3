@@ -1,1 +1,1 @@
-printf("Commit power")
+ printf("Commit power")

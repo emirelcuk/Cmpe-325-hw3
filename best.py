@@ -13,17 +13,7 @@ class Calculator:
         self.result = x + y
         return self.result
   
-    # Method to subtract two numbers
-    def subtract(self, x, y):
-        """Subtracts the second number from the first and returns the result."""
-        self.result = x - y
-        return self.result
 
-    # Method to multiply two numbers
-    def multiply(self, x, y):
-        """Multiplies two numbers and returns the result."""
-        self.result = x * y
-        return self.result
 
     # Method to divide two numbers
     def divide(self, x, y):

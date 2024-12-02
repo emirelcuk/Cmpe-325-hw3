@@ -4,7 +4,7 @@ import math
 # Define a class to represent a basic Calculator
 class Calculator:
 
-  
+   
 
 @app.route('/commit_history/<int:commit_id>')
 def commit_details(commit_id):

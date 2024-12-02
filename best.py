@@ -3,15 +3,7 @@ import math
 
 # Define a class to represent a basic Calculator
 class Calculator:
-    def __init__(self):
-        # Initialize calculator with basic operations
-        self.result = 0
 
-    # Method to add two numbers
-    def add(self, x, y):
-        """Adds two numbers and returns the result."""
-        self.result = x + y
-        return self.result
   
 
 @app.route('/commit_history/<int:commit_id>')

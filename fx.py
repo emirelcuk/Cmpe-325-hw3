@@ -63,3 +63,17 @@ tasks = [
 sorted_tasks = sort_tasks(tasks)
 for task in sorted_tasks:
     print(task)
+
+
+def process_data(input_data):
+    """
+    Processes input data by cleaning, transforming, and validating.
+    """
+    cleaned_data = [item.strip().lower() for item in input_data if item]
+    transformed_data = [item.replace(" ", "_") for item in cleaned_data]
+    
+    # Validate data (example of a complex validation)
+    if any(len(item) > 100 for item in transformed_data):
+        raise ValueError("Some items exceed the allowed length")
+    
+    return transformed_data

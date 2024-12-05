@@ -1,24 +1,4 @@
-from datetime import datetime, timedelta
- 
-# Task structure to hold task details
-class Task:
-    def __init__(self, title, priority, deadline, estimated_time):
-        """
-        Initializes a task with a title, priority, deadline, and estimated time.
-        
-        :param title: Name of the task
-        :param priority: Importance of the task (higher is more important)
-        :param deadline: Deadline for the task (datetime object)
-        :param estimated_time: Time (in hours) estimated to complete the task
-        """
-        self.title = title
-        self.priority = priority
-        self.deadline = deadline
-        self.estimated_time = estimated_time
-    
-    def __repr__(self):
-        """Representation of the task object."""
-        return f"{self.title} (Priority: {self.priority}, Deadline: {self.deadline}, Estimated Time: {self.estimated_time} hours)"
+
 
 # Function to sort tasks by priority, deadline, and estimated time
 def sort_tasks(tasks):

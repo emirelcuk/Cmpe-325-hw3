@@ -44,21 +44,7 @@ def commit_details(commit_id):
         return self.result
 
 # Function to demonstrate the use of the Calculator class
-def main():
-    # Create an instance of the Calculator class
-    calc = Calculator()
 
-    # Perform addition
-    add_result = calc.add(10, 5)
-    print(f"Addition Result: {add_result}")
-
-    # Perform subtraction
-    subtract_result = calc.subtract(10, 5)
-    print(f"Subtraction Result: {subtract_result}")
-
-    # Perform multiplication
-    multiply_result = calc.multiply(10, 5)
-    print(f"Multiplication Result: {multiply_result}")
 
     # Perform division
     try:

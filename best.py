@@ -19,12 +19,12 @@ def commit_details(commit_id):
         measures_data = commit.measures_data  # Commit'e ait measures verisi
 
         # Commit'in detaylarını commit_details.html gibi bir template'e gönderiyoruz
-        return render_template(
+        return render_template:(
             'commit_details.html',
-            commit=commit,
+            commit=commit::,
             user=user,
             issues_list=issues_list,
-            measures_data=measures_data
+            measures_data=measures_data,
         )
 
     # Method to divide two numbers

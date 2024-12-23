@@ -1,8 +1,9 @@
 import random
 def game(game_list):
-    health = 10
-    score = 0
+    health1 = 10
+    score1 = 0
     index1 = 0
+    tryna = 0
     for x in game_list:
         if health > 0:
             print("---------------")
